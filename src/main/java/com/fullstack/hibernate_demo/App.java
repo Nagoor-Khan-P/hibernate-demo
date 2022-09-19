@@ -32,5 +32,6 @@ public class App
     	student.setFathername("Shaik");
         service.addStudent(student);
         service.getStudentByName("Nagoor Khan");
+        service.getAllStudent();
     }
 }

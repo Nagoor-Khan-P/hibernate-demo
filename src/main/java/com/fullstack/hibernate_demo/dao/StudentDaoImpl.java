@@ -39,13 +39,16 @@ public class StudentDaoImpl implements StudentDao{
 		query.setParameter("name", name);
 		List<Student> student=query.getResultList();
 		System.out.print(student);
-		session.close();
 		return null;
 	}
 
 	@Override
 	public List<Student> getAllStudent() {
 		// TODO Auto-generated method stub
+		String hqlQuery="FROM Student";
+		Query query=session.createQuery(hqlQuery);
+		List<Student> students=query.getResultList();
+		System.out.println(students);
 		return null;
 	}
 
