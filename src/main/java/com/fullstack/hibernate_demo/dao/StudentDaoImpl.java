@@ -3,21 +3,22 @@ package com.fullstack.hibernate_demo.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import com.fullstack.hibernate_demo.dto.Student;
-import com.fullstack.hibernate_demo.hibernate_config.HibernateConfig;
 
 public class StudentDaoImpl implements StudentDao{
 	
-	private HibernateConfig config;
+	private SessionFactory factory;
 	private Session session;
 	
 	
 	
 	public StudentDaoImpl() {
 		super();
-		config=new HibernateConfig();
-		session=config.buildSessionFactory().openSession();
+		factory=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class).buildSessionFactory();
+    	session=factory.openSession();
 	}
 
 	@Override
