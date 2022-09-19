@@ -31,5 +31,6 @@ public class App
     	student.setLocation("Hyderabad");
     	student.setFathername("Shaik");
         service.addStudent(student);
+        service.getStudentByName("Nagoor Khan");
     }
 }

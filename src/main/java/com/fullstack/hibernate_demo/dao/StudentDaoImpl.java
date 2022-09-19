@@ -2,6 +2,8 @@ package com.fullstack.hibernate_demo.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -26,15 +28,18 @@ public class StudentDaoImpl implements StudentDao{
 		// TODO Auto-generated method stub
 		session.beginTransaction();
 		session.save(student);
-		session.close();
 		return null;
 	}
 
 	@Override
 	public Student getStudentByName(String name) {
 		// TODO Auto-generated method stu
-		
-		
+		String hqlQuery="FROM Student E WHERE E.sname = :name";
+		Query query = session.createQuery(hqlQuery);
+		query.setParameter("name", name);
+		List<Student> student=query.getResultList();
+		System.out.print(student);
+		session.close();
 		return null;
 	}
 
